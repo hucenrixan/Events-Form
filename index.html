@@ -18,7 +18,8 @@
             <h1>Special Events</h1>
             <p>Creating Unforgettable Moments</p>
         </header>
-        <form id="registrationForm" action="submit.php" method="POST" enctype="multipart/form-data">
+        <form id="registrationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <!-- To activate: replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
             <section class="form-section">
                 <h2>Contact Information</h2>
                 <div class="form-group">
@@ -299,6 +300,19 @@
                 </div>
             </div>
         </form>
+    </div>
+    <!-- Success message shown after form submission -->
+    <div id="successMessage" style="display: none; text-align: center; padding: 60px 40px;">
+        <div class="logo-container" style="margin-bottom: 30px;">
+            <img src="assets/img/logo.PNG" alt="Special Events Logo" class="form-logo" style="height: 100px; mix-blend-mode: multiply;">
+        </div>
+        <div style="width: 60px; height: 60px; background-color: #8b947a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 30px;">&#10003;</div>
+        <h1 style="color: #8b947a; font-family: 'Playfair Display', serif; margin-bottom: 15px;">Registration Successful!</h1>
+        <p style="font-size: 1.1rem; color: #444; line-height: 1.6;">Thank you! We have successfully received your wedding registration information and vision.</p>
+        <p style="margin-top: 15px; color: #666;">Our team will review your details and get back to you shortly via email or phone to discuss your dream wedding.</p>
+        <div style="margin-top: 40px; border-top: 1px solid #e0e0e0; padding-top: 30px;">
+            <a href="index.html" class="submit-btn" style="text-decoration: none; display: inline-block;">Back to Form</a>
+        </div>
     </div>
     <script src="assets/js/script.js"></script>
 </body>
