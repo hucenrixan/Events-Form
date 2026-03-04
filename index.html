@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Special Events</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="assets/img/logo.PNG" alt="Special Events Logo" class="form-logo">
+            </div>
+            <h1>Special Events</h1>
+            <p>Creating Unforgettable Moments</p>
+        </header>
+        <form id="registrationForm" action="submit.php" method="POST" enctype="multipart/form-data">
+            <section class="form-section">
+                <h2>Contact Information</h2>
+                <div class="form-group">
+                    <label for="clientName">Your Full Name *</label>
+                    <input type="text" id="clientName" name="clientName" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="partnerName">Partner's Full Name *</label>
+                    <input type="text" id="partnerName" name="partnerName" required placeholder="Partner's Name">
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Phone Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="instagram">Instagram ID</label>
+                    <input type="text" id="instagram" name="instagram" placeholder="@yourhandle">
+                </div>
+                <div class="form-group">
+                    <label for="clientID">ID Card or Passport Number (Person Booking)</label>
+                    <input type="text" id="clientID" name="clientID" placeholder="ID or Passport Number">
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>Event Details</h2>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="weddingDate">Wedding Date (Approximate)</label>
+                        <input type="date" id="weddingDate" name="weddingDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="partyStartTime">Party Starting Time</label>
+                        <input type="time" id="partyStartTime" name="partyStartTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="partyEndTime">Party Ending Time</label>
+                        <input type="time" id="partyEndTime" name="partyEndTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestCount">Guest Count (Estimated)</label>
+                        <input type="number" id="guestCount" name="guestCount" min="0" placeholder="Number of Guests">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="location">Preferred Location/Venue</label>
+                    <select id="location" name="location">
+                        <option value="">Select a Location</option>
+                        <option value="Manhattan">Manhattan</option>
+                        <option value="Sifco Hall">Sifco Hall</option>
+                        <option value="Lonziyari Park">Lonziyari Park</option>
+                        <option value="Giyaasudheen School">Giyaasudheen School</option>
+                        <option value="House Of Jade">House Of Jade</option>
+                        <option value="Campa Central Hotel">Campa Central Hotel</option>
+                        <option value="Apollo Tower">Apollo Tower</option>
+                        <option value="other">Other (Manual Entry)</option>
+                    </select>
+                </div>
+                <div class="form-group" id="manualLocationGroup" style="display: none;">
+                    <label for="manualLocation">Please specify location</label>
+                    <input type="text" id="manualLocation" name="manualLocation" placeholder="Enter your venue or city">
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>Cake Table & Packages</h2>
+                <div class="form-group">
+                    <label>Select Cake Table Type *</label>
+                    <div class="selection-grid" id="cakeTableOptions">
+                        <div class="selection-item" data-value="classic">
+                            <div class="selection-image">
+                                <img src="assets/img/Round.jpg" alt="Classic Round Cake Table">
+                            </div>
+                            <span>Classic Round</span>
+                        </div>
+                        <div class="selection-item" data-value="modern">
+                            <div class="selection-image">
+                                <img src="assets/img/Rectangle.jpeg" alt="Modern Square Cake Table">
+                            </div>
+                            <span>Modern Square</span>
+                        </div>
+                        <div class="selection-item" data-value="vintage">
+                            <div class="selection-image">
+                                <img src="assets/img/cake-vintage.jpg" alt="Vintage Rustic Cake Table">
+                            </div>
+                            <span>Vintage Rustic</span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="cakeTableType" id="cakeTableType" required>
+                </div>
+                <div class="form-group">
+                    <label for="cakeTableSize">Cake Table Size</label>
+                    <select id="cakeTableSize" name="cakeTableSize">
+                        <option value="">Select Size</option>
+                        <option value="Small (3ft)">Small (3ft)</option>
+                        <option value="Medium (4ft)">Medium (4ft)</option>
+                        <option value="Large (6ft)">Large (6ft)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Wedding Decoration Packages *</label>
+                    <div class="package-list">
+                        <label class="radio-card">
+                            <input type="radio" name="decorPackage" value="basic" required>
+                            <div class="card-content">
+                                <strong>Package 1</strong>
+                                <span class="package-price">MVR 5,999</span>
+                                <span>Essential floral & Simple backdrop</span>
+                                <ul class="package-details">
+                                    <li>Standard Backdrop</li>
+                                    <li>Backdrop Lighting</li>
+                                    <li>White Flooring</li>
+                                    <li>Welcome board </li>
+                                    <li>Cake Table(table only)</li>
+
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="decorPackage" value="premium">
+                            <div class="card-content">
+                                <strong>Package 2</strong>
+                                <span class="package-price">MVR 14,999 to 14,999</span>
+                                <span>Full venue styling & premium florals</span>
+                                <ul class="package-details">
+                                    <li>Backdrop</li>
+                                    <li>Backdrop Lighting</li>
+                                    <li>White Flooring</li>
+                                    <li>Welcome board </li>
+                                    <li>Floral Centerpiece</li>
+                                    <li>Cake Table(table only)</li>
+                                    <li>Marriage table and decoration</li>
+                                    <li>Fairy lights</li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="decorPackage" value="luxury">
+                            <div class="card-content">
+                                <strong>Package 3</strong>
+                                <span class="package-price">MVR 14,999 to 18,999</span>
+                                <span>Custom design & ultimate extravagance</span>
+                                <ul class="package-details">
+                                    <li>Backdrop</li>
+                                    <li>Backdrop Lighting</li>
+                                    <li>White Flooring</li>
+                                    <li>Welcome board (Custom) </li>
+                                    <li>Floral Centerpiece</li>
+                                    <li>Cake Table(table only)</li>
+                                    <li>Marriage table and decoration</li>
+                                    <li>Fairy lights</li>
+                                    <li>Hanging flowers ( on backdrop area) optional</li>
+                                    <li>Playback Sound</li>
+                                    <li>Envelope box</li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="decorPackage" value="luxury">
+                            <div class="card-content">
+                                <strong>Package 4</strong>
+                                <span class="package-price">MVR 19,999 to 29,999</span>
+                                <span>Custom design & ultimate extravagance</span>
+                                <ul class="package-details">
+                                    <li>Backdrop</li>
+                                    <li>Backdrop Lighting</li>
+                                    <li>White Flooring</li>
+                                    <li>Welcome board (Custom) </li>
+                                    <li>Floral Centerpiece</li>
+                                    <li>Cake Table(table only)</li>
+                                    <li>Marriage table and decoration</li>
+                                    <li>Fairy lights</li>
+                                    <li>White Stage(Platform)</li>
+                                    <li>Initial On walkway</li>
+                                    <li>Hanging flowers ( on backdrop area) optional</li>
+                                    <li>Playback Sound</li>
+                                    <li>Envelope box</li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="decorPackage" value="custom">
+                            <div class="card-content">
+                                <strong>Custom Package</strong>
+                                <span class="package-price">Price on Request</span>
+                                <span>Tailored specifically to your vision and budget</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="customPackageDetails" style="display: none;">
+                    <div class="form-group">
+                        <label for="estimatedBudget">Estimated Budget *</label>
+                        <input type="number" id="estimatedBudget" name="estimatedBudget" min="0" placeholder="Enter your estimated budget (e.g., 5000)">
+                    </div>
+                    <div class="form-group">
+                        <label for="customRequirements">Decoration Requirements *</label>
+                        <textarea id="customRequirements" name="customRequirements" rows="4" placeholder="What are the specific things you need for decoration?"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Add-ons</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="Hanging flowers on hall (Wisteria)"> Hanging flowers on hall (Wisteria)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="Hanging Crystals on Hall"> Hanging Crystals on Hall
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="Photography & videography (Shifau .mv)"> Photography & videography (Shifau .mv)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="PhotoBooth (By ProBooth maldives)"> PhotoBooth (By ProBooth maldives)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="Platform (Stage)"> Platform (Stage)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="Initials (Floor Letter)"> Initials (Floor Letter)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="addons[]" value="Table and chairs"> Table and chairs
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>Your Vision</h2>
+                <div class="form-group">
+                    <label for="ideas">Tell us about your ideas & vision</label>
+                    <textarea id="ideas" name="ideas" rows="5" placeholder="Share your colors, style, and must-haves..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="weddingColors">Wedding or Decoration Colours</label>
+                    <input type="text" id="weddingColors" name="weddingColors" placeholder="e.g., Sage Green, Dusty Rose, Gold">
+                </div>
+                <div class="form-group file-upload">
+                    <label for="inspiration">Upload Inspiration (Mood boards, photos, etc.)</label>
+                    <input type="file" id="inspiration" name="inspiration" multiple accept="image/*,.pdf">
+                    <small>Allowed files: Images, PDF</small>
+                </div>
+            </section>
+
+            <div class="form-footer">
+                <div class="terms-container">
+                    <h3>Terms & Conditions</h3>
+                    <ul class="terms-list">
+                        <li>We take a Non-refundable booking fee to confirm and book the client to the given date. Booking fee is NOT included in the total price.</li>
+                        <li>Full amount is Non-refundable and needs to be paid 20 days before the wedding date.</li>
+                        <li>We will not be responsible for any changes made by client after final invoice has been paid, unless the client notify us about the changes, within a reasonable time.</li>
+                        <li>We are not obliged to do/provide any extra decoration or item which is NOT mentioned in the final invoice.</li>
+                        <li>Client should refrain from taking any decoration item/object from the venue unless it is theirs. Incase of missing items/objects, client shall pay for the items.</li>
+                        <li>By submitting this form, the client is agreeing to the above mentioned Terms & Conditions.</li>
+                    </ul>
+                </div>
+                <div class="footer-actions">
+                    <div class="terms-group">
+                        <input type="checkbox" id="mediaConsent" name="mediaConsent">
+                        <label for="mediaConsent" class="inline-label">I agree to the use of our wedding photos/videos for promotional purposes</label>
+                    </div>
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms" class="inline-label">I agree to the Terms and Conditions *</label>
+                    </div>
+                    <p class="required-note">* Required Fields</p>
+                    <button type="submit" class="submit-btn">Send My Vision</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

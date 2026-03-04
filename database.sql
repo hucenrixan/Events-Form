@@ -1,0 +1,27 @@
+-- SQL Schema for Wedding Registration Form Submissions
+CREATE DATABASE IF NOT EXISTS wedding_db;
+USE wedding_db;
+
+CREATE TABLE IF NOT EXISTS submissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    submission_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    client_name VARCHAR(255) NOT NULL,
+    partner_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50) NOT NULL,
+    instagram VARCHAR(100),
+    client_id VARCHAR(100),
+    wedding_date DATE,
+    party_start_time TIME,
+    party_end_time TIME,
+    guest_count INT,
+    location VARCHAR(255),
+    cake_table_type VARCHAR(100),
+    cake_table_size VARCHAR(100),
+    decor_package VARCHAR(100),
+    estimated_budget DECIMAL(15, 2),
+    custom_requirements TEXT,
+    addons TEXT,
+    media_consent VARCHAR(20),
+    ideas TEXT
+);

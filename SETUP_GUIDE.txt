@@ -1,0 +1,78 @@
+# Setup Guide: Wedding Registration Form
+
+Follow these steps to set up your MySQL database and Email system on your Mac.
+
+## 1. Prerequisites
+- **Homebrew** installed.
+- **MySQL** installed via Homebrew.
+- **TablePlus** installed.
+
+---
+
+## 2. Database Setup
+
+### A. Start MySQL
+Open your **Terminal** and run:
+```bash
+brew services start mysql
+```
+
+### B. Create Database & Table in TablePlus
+1. Open **TablePlus** and create a new Connection.
+   - **Host**: 127.0.0.1
+   - **User**: root
+   - **Password**: (Leave empty unless you set one)
+2. Click the **SQL** icon (Cmd + E).
+3. Copy and paste the content of `database.sql` into the editor.
+4. Highlight the code and click **Run Current**.
+   - This creates the `wedding_db` database and the `submissions` table.
+
+---
+
+## 3. Configuration
+
+Open `config.php` in your code editor and update your credentials:
+
+```php
+// Database
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'wedding_db');
+define('DB_USER', 'root');   // Default for Homebrew
+define('DB_PASS', '');       // Default is empty
+
+// Email
+define('ADMIN_EMAIL', 'your-personal-email@example.com'); 
+define('FROM_EMAIL', 'info@specialeventsmv.com');
+```
+
+---
+
+## 4. Running the Form Locally
+
+1. In Terminal, navigate to your project folder:
+   ```bash
+   cd "/Volumes/DevSSD/DEV Works/Events From"
+   ```
+2. Start the PHP server:
+   ```bash
+   php -S localhost:8000
+   ```
+3. Open your browser and go to: `http://localhost:8000`
+
+---
+
+## 5. Important Notes
+
+### Email Functionality
+- The `mail()` function in PHP often requires a configured mail server to work on a local Mac.
+- For testing, most developers use **Mailpit** (`brew install mailpit`).
+- Once you upload these files to your **Live Web Hosting**, emails will typically work automatically.
+
+### Backups
+- Every submission is also saved to `submissions.csv` in the project root. You can open this file in Excel or Numbers.
+
+---
+
+## Troubleshooting
+- **Database Error**: Ensure MySQL is running (`brew services list`).
+- **Styles missing**: Ensure the `assets` folder is in the same directory as `index.html`.
