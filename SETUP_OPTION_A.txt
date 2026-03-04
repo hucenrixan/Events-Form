@@ -1,0 +1,61 @@
+============================================================
+   WEDDING REGISTRATION FORM - OPTION A (CSV SETUP GUIDE)
+============================================================
+
+Since you chose "Option A," your form is configured to automatically
+save all submissions into a single spreadsheet-ready file called 
+"submissions.csv" in your project folder.
+
+Follow these 4 steps to get everything running on your Mac:
+
+------------------------------------------------------------
+STEP 1: PLACE YOUR FILES
+------------------------------------------------------------
+Ensure all your files are in your project folder (/Volumes/DevSSD/DEV Works/Events From/):
+- index.html
+- submit.php
+- config.php
+- submissions.csv (this will be created automatically if missing)
+- assets/ (folder containing your CSS, JS, and Images)
+
+------------------------------------------------------------
+STEP 2: START YOUR LOCAL SERVER
+------------------------------------------------------------
+Because your form uses PHP (to save the data), you cannot just 
+double-click "index.html". You must run it through a server.
+
+1. Open your Terminal.
+2. Type the following command and press Enter:
+   cd "/Volumes/DevSSD/DEV Works/Events From" && php -S localhost:8000
+
+3. Keep the Terminal window open!
+
+------------------------------------------------------------
+STEP 3: TEST THE FORM
+------------------------------------------------------------
+1. Open your web browser (Safari, Chrome, etc.).
+2. In the address bar, type: http://localhost:8000
+3. Fill out the form with test information.
+4. Click "Send My Vision".
+5. You should see the green "Registration Successful!" page.
+
+------------------------------------------------------------
+STEP 4: ACCESS YOUR "BACKEND SHEET"
+------------------------------------------------------------
+1. Go back to your project folder in Finder.
+2. Look for a file named "submissions.csv".
+3. Right-click it and choose "Open With" -> "Microsoft Excel" 
+   or "Numbers".
+4. Every new client will appear as a new row at the bottom!
+
+------------------------------------------------------------
+TROUBLESHOOTING (If data doesn't save)
+------------------------------------------------------------
+If the CSV file is not updating, it is usually a "Permission" 
+issue on your Mac. To fix it, run this in your Terminal:
+
+chmod 777 "/Volumes/DevSSD/DEV Works/Events From"
+
+This tells your Mac to allow the PHP script to "write" the 
+CSV file into that folder.
+============================================================
