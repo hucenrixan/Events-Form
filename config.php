@@ -5,8 +5,8 @@
 
 // MySQL Database Credentials
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'wedding_db');
-define('DB_USER', 'root');
+define('DB_NAME', 'u764136565_wedding_db');
+define('DB_USER', 'u764136565_root');
 define('DB_PASS', 'Rixan@9688');
 
 // Email Configuration
