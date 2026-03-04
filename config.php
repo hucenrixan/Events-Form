@@ -7,7 +7,7 @@
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'wedding_db');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'Rixan@9688');
 
 // Email Configuration
 define('ADMIN_EMAIL', 'hucenrixan@gmail.com');
