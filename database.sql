@@ -1,7 +1,4 @@
 -- SQL Schema for Wedding Registration Form Submissions
-CREATE DATABASE IF NOT EXISTS wedding_db;
-USE wedding_db;
-
 CREATE TABLE IF NOT EXISTS submissions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     submission_date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -23,5 +20,6 @@ CREATE TABLE IF NOT EXISTS submissions (
     custom_requirements TEXT,
     addons TEXT,
     media_consent VARCHAR(20),
-    ideas TEXT
+    ideas TEXT,
+    wedding_colors VARCHAR(100)
 );

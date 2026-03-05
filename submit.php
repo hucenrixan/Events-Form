@@ -88,8 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     client_id, wedding_date, party_start_time, party_end_time, guest_count, location, 
                     cake_table_type, cake_table_size, decor_package, 
                     estimated_budget, custom_requirements, addons, 
-                    media_consent, ideas
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    media_consent, ideas, wedding_colors
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $clientID, ($weddingDate ?: null), ($partyStartTime ?: null), ($partyEndTime ?: null), $guestCount, $location,
             $cakeTableType, $cakeTableSize, $decorPackage,
             $estimatedBudget, $customRequirements, $addons_str,
-            $mediaConsent, $ideas
+            $mediaConsent, $ideas, $weddingColors
         ]);
     } catch (PDOException $e) {
         // Log the error but continue to email/success message (in a real app, you might want more complex handling)
