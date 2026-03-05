@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
     } catch (PDOException $e) {
         // Log the error but continue to email/success message (in a real app, you might want more complex handling)
-        error_log("Database Error: " . $e->getMessage());
+        echo "Database Error: " . $e->getMessage();
     }
 
     // --- Send via Email ---
