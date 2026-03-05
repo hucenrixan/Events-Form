@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'Submission Date', 'Client Name', 'Partner Name', 'Email', 'Phone', 'Instagram',
         'ID/Passport', 'Wedding Date', 'Party Start Time', 'Party End Time', 'Guest Count', 'Location', 'Cake Table Type',
         'Cake Table Size', 'Package', 'Estimated Budget', 'Custom Requirements',
-        'Add-ons', 'Media Consent', 'Ideas'
+        'Add-ons', 'Media Consent', 'Ideas', 'Wedding Colors'
     ];
 
     // Data to save
@@ -65,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $customRequirements,
         $addons_str,
         $mediaConsent,
-        $ideas
+        $ideas,
+        $weddingColors
     ];
 
     // Open file in append mode
@@ -100,8 +101,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mediaConsent, $ideas, $weddingColors
         ]);
     } catch (PDOException $e) {
-        // Log the error but continue to email/success message (in a real app, you might want more complex handling)
-        echo "Database Error: " . $e->getMessage();
+        // Log the error to error_log for administrative review
+        error_log("Database Error: " . $e->getMessage());
+        // Show an error to the user if the database insertion failed
+        echo "<div style='background-color: #ffdde1; color: #d8000c; padding: 15px; border: 1px solid #d8000c; margin: 20px auto; max-width: 600px; border-radius: 5px; font-family: sans-serif; text-align: center;'>
+                <strong>Database Error:</strong> Data could not be saved to the database. However, your inquiry has been sent via email to our staff.
+              </div>";
     }
 
     // --- Send via Email ---
