@@ -1,4 +1,14 @@
 -- SQL Schema for Wedding Registration Form Submissions
+
+-- Admin users table (for the protected admin panel)
+CREATE TABLE IF NOT EXISTS admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
 CREATE TABLE IF NOT EXISTS submissions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     submission_date DATETIME DEFAULT CURRENT_TIMESTAMP,
