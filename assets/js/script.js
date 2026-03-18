@@ -2,20 +2,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
     
     form.addEventListener('submit', function(event) {
-        // You can add more complex client-side validation here
+        event.preventDefault();
+
         const clientName = document.getElementById('clientName').value;
         const email = document.getElementById('email').value;
-        
+
         if (!clientName || !email) {
             alert('Please fill in all required fields.');
-            event.preventDefault();
             return;
         }
-        
-        // Optional: Show a loading state on the button
+
         const submitBtn = form.querySelector('.submit-btn');
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
+
+        if (form.action.includes('YOUR_FORM_ID')) {
+            submitBtn.textContent = 'Send My Vision';
+            submitBtn.disabled = false;
+            alert('Form is not configured yet. Please replace YOUR_FORM_ID in the form action with your Formspree form ID from https://formspree.io');
+            return;
+        }
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                form.style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } else {
+                submitBtn.textContent = 'Send My Vision';
+                submitBtn.disabled = false;
+                response.json().then(function(data) {
+                    const msg = (data.errors && data.errors.length)
+                        ? data.errors.map(function(e) { return e.message; }).join('\n')
+                        : 'Oops! There was a problem submitting your form. Please try again.';
+                    alert(msg);
+                }).catch(function() {
+                    alert('Oops! There was a problem submitting your form. Please try again.');
+                });
+            }
+        })
+        .catch(function() {
+            submitBtn.textContent = 'Send My Vision';
+            submitBtn.disabled = false;
+            alert('Oops! There was a problem submitting your form. Please check your connection and try again.');
+        });
     });
 
     // Handle file size validation (example: max 5MB)
